@@ -243,25 +243,6 @@ def api_status():
     return jsonify({"services": services})
 
 
-@app.route("/api/start", methods=["POST"])
-def api_start():
-    if not ENABLE_DOCKER_MANAGEMENT:
-        return jsonify({"error": "Docker management disabled in this deployment"}), 503
-    def run():
-        _run(["docker", "compose", "up", "--build", "-d"])
-    threading.Thread(target=run, daemon=True).start()
-    return jsonify({"ok": True, "message": "docker compose up --build -d 已在背景啟動"})
-
-
-@app.route("/api/stop", methods=["POST"])
-def api_stop():
-    if not ENABLE_DOCKER_MANAGEMENT:
-        return jsonify({"error": "Docker management disabled in this deployment"}), 503
-    result = _run(["docker", "compose", "down"])
-    return jsonify({"ok": result.returncode == 0,
-                    "message": result.stdout + result.stderr})
-
-
 @app.route("/api/query", methods=["POST"])
 def api_query():
     data = request.get_json(force=True)
