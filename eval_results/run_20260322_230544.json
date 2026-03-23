@@ -1,0 +1,3395 @@
+{
+  "summary": {
+    "run_at": "2026-03-22T23:15:25.221098",
+    "dataset": "/Users/viviliu/Documents/10_Vivi/PcaHW/backend/evaluation/golden_dataset.json",
+    "total_cases": 78,
+    "layers_run": [
+      1,
+      2,
+      3
+    ],
+    "use_mock": false,
+    "layer1": {
+      "routing_accuracy": 0.949,
+      "intent_accuracy": 0.859,
+      "emotion_accuracy": 1.0,
+      "total": 78,
+      "route_pass": 74,
+      "intent_pass": 67
+    },
+    "layer2": {
+      "faq_recall_at_3": 0.881,
+      "pass_rate": 0.95,
+      "total_evaluated": 60
+    },
+    "layer3": {
+      "pass_rate": 0.868,
+      "total_evaluated": 68,
+      "avg_judge_scores": {
+        "correctness": 3.92,
+        "completeness": 3.35,
+        "groundedness": 4.25,
+        "actionability": 3.29,
+        "overall": 3.71
+      },
+      "escalation_count": 16
+    },
+    "elapsed_seconds": 581.2
+  },
+  "results": [
+    {
+      "id": "order_001",
+      "query": "我的訂單 ORD-2026-001234 什麼時候會到？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶詢問訂單狀態，可由AI查詢並回覆",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "訂單",
+          "到貨",
+          "配送"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7077,
+        "best_policy_score": 0.6286,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，您的訂單 ORD-2026-001234 已於 2026 年 3 月 16 日出貨，預計將於 2026 年 3 月 19 日下午 6 點送達，請留意簡訊通知。",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 4,
+          "groundedness": 1,
+          "actionability": 2,
+          "critique": "客服直接給出預計送達時間，但知識庫中沒有提供直接查詢到貨日期的資訊。客服應引導客戶自行查詢物流，若超過預計到貨日再聯絡客服。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "order_002",
+      "query": "我昨天下的訂單可以取消嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶詢問取消訂單，交由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "取消",
+          "訂單"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7532,
+        "best_policy_score": 0.6264,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，請問您的訂單編號是？ 這樣我才能幫您查詢訂單狀態，看看是否可以取消。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 2,
+          "critique": "回覆僅詢問訂單編號，未主動提供取消訂單的相關資訊或步驟，完整性不足。雖然基於知識庫，但沒有直接回答客戶問題，可執行性低。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "order_003",
+      "query": "出貨了嗎？我等好久了",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶詢問訂單狀態，可由AI查詢並回覆",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "訂單",
+          "出貨"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7044,
+        "best_policy_score": 0.6466,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，想請問您的訂單號碼是 ORD-YYYY-XXXXXX 這種格式嗎？提供訂單號碼後，我就可以幫您查詢出貨狀態喔！",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服僅詢問訂單號碼，雖有助於查詢，但未主動提供查詢方法或預計出貨時間等資訊。回覆過於簡略，未充分利用知識庫內容。要求提供訂單編號是可執行的一步。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "order_004",
+      "query": "我買了3個商品但只收到2個，少了一個",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶反應包裹缺少商品，判斷為物流問題，轉交AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "聯繫",
+          "客服",
+          "補"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6512,
+        "best_policy_score": 0.6851,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "親愛的顧客您好，非常抱歉造成您的困擾。為了能更準確地查詢商品運送狀況，能否請您提供物流追蹤編號？ 這樣我才能幫您確認是哪個環節出了問題。謝謝您！",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 3,
+          "actionability": 3,
+          "critique": "客服回覆僅初步詢問物流編號，但未直接提供解決方案或相關知識庫資訊。雖然有嘗試了解狀況，但缺乏實質幫助，完整性不足。可以主動提供遺失包裹的處理流程，更具體地引導客戶。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "order_005",
+      "query": "訂單狀態顯示已出貨但一週了還沒收到，怎麼回事？",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "物流",
+          "追蹤",
+          "聯繫"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7123,
+        "best_policy_score": 0.6875,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，非常抱歉造成您的困擾。要查詢物流狀態，需要物流追蹤編號，可以請您提供嗎？ 格式如 TW-XXXXXXXXXX。",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 1,
+          "groundedness": 3,
+          "actionability": 2,
+          "critique": "回覆未提供客戶可自行查詢訂單狀態的方式，僅要求提供物流編號。雖然要求提供物流編號看似合理，但客戶可能無法立即提供。應先告知客戶可自行查詢的方式。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "order_006",
+      "query": "請問訂單可以修改收件地址嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶詢問訂單修改地址，AI 可以處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "地址",
+          "修改"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.749,
+        "best_policy_score": 0.6002,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，請問您的訂單編號是 ORD-YYYY-XXXXXX 這樣的格式嗎？提供訂單編號後，我才能幫您查詢訂單狀態，看看是否可以修改收件地址喔！",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 2,
+          "groundedness": 1,
+          "actionability": 2,
+          "critique": "客服未根據知識庫內容回答，僅詢問訂單編號，沒有告知客戶修改地址的具體條件和方法。回覆沒有根植於知識庫，且可執行性低，客戶無法從回覆中獲得有效幫助。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "order_007",
+      "query": "剛下單可以追加商品嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶詢問訂單相關問題，可以由AI嘗試回答。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "訂單",
+          "修改"
+        ],
+        "keywords_missing": [
+          "新訂單"
+        ],
+        "best_faq_score": 0.7015,
+        "best_policy_score": 0.5861,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "order_008",
+      "query": "我的訂單 ORD-2026-005678 已付款但顯示未確認",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "訂單問題，交由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "訂單",
+          "確認",
+          "付款"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6717,
+        "best_policy_score": 0.5848,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，我查詢了 ORD-2026-005678 這個訂單編號，但系統顯示找不到此訂單。請問您是否能再次確認訂單編號是否正確呢？",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 3,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服首先確認訂單編號，此舉正確。但未主動提供查詢訂單狀態的方式（如官網查詢、客服專線），完整性略有不足，應更積極引導客戶。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_001",
+      "query": "我想退貨，請問流程是什麼？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退貨",
+          "申請",
+          "流程"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7801,
+        "best_policy_score": 0.7396,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，若您想退貨，請您先登入「我的訂單」，選擇要退貨的訂單，然後點擊「申請退貨」，並填寫退貨原因。系統會提供您退貨寄件標籤（免運費），請您將商品連同原包裝寄回，並保留寄件收據。我們收到商品後 3 個工作天內完成驗收，驗收通過後 5-7 個工作天退款。依消費者保護法，您在收到商品後 7 天內可無條件退貨（鑑賞期）。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "客服回覆完全基於知識庫，提供了完整且正確的退貨流程說明，並告知了退貨時限，客戶能清楚理解並執行。回覆具體且易於操作。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_002",
+      "query": "七天鑑賞期是從哪天開始算？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "鑑賞期",
+          "收到"
+        ],
+        "keywords_missing": [
+          "七天"
+        ],
+        "best_faq_score": 0.6943,
+        "best_policy_score": 0.7494,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，七天鑑賞期是從您實際收到商品的那天開始算起的喔！為期七天，如果最後一天剛好是假日，會順延到下一個工作日。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服回覆完全正確且基於知識庫，完整回答了鑑賞期起算日。但若能加入查詢鑑賞期截止日的範例，會更具體，提升可執行性。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_003",
+      "query": "退款要多久才會到帳？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交由 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退款",
+          "工作天",
+          "信用卡"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7472,
+        "best_policy_score": 0.6614,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，退款時間依照您的付款方式會有所不同喔：\n- 若您使用信用卡付款，退款時間約 5-7 個工作天（依銀行作業）。\n- 若您使用 LINE Pay / 街口支付，退款時間約 3-5 個工作天。\n- 若您使用 ATM 轉帳或貨到付款，則需要您提供退款帳號，退款時間約 5-7 個工作天。\n\n您可以在「我的訂單 → 退款記錄」中查詢退款進度。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "客服回覆完全正確，完整回答了退款所需時間，並根據不同付款方式提供詳細說明。同時也告知客戶查詢退款進度的方式，提供可執行性指引。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_004",
+      "query": "買的商品跟網頁描述不符，我要換貨",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "換貨",
+          "申請"
+        ],
+        "keywords_missing": [
+          "商品描述"
+        ],
+        "best_faq_score": 0.7695,
+        "best_policy_score": 0.7085,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於您購買的商品與網頁描述不符，想要換貨的問題。根據我們的退換貨政策，若商品與網頁描述不符，您可以申請換貨。請您在收到商品7天內，登入「我的訂單」，選擇「申請換貨」，並填寫換貨原因，上傳商品照片。我們的客服人員會盡快審核您的申請。審核通過後，我們會寄出新的商品並提供退回標籤，請您將原商品寄回，我們確認後就會完成換貨。若您有其他問題，歡迎隨時提出。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "客服回覆完全基於知識庫，準確且完整地回答了客戶的問題，提供了清晰的操作步驟，具備高度的可執行性，能有效協助客戶解決換貨問題。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_005",
+      "query": "食品類商品可以退貨嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "食品",
+          "退貨"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6906,
+        "best_policy_score": 0.7124,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，依據我們的退換貨政策，由於食品類商品屬於易腐壞或保存期限較短的商品，因此不適用於鑑賞期，一般情況下無法退貨。但若您收到的商品有製造瑕疵、已損壞，或是與您訂購的商品不符，我們仍然可以為您辦理退貨。請問您的商品是否屬於以上情況呢？",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "回覆完全正確，涵蓋了食品類商品退貨的相關規定，並主動詢問商品狀況，引導客戶提供更多資訊以便判斷。若能直接提供退貨申請路徑會更佳。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_006",
+      "query": "我的退貨申請被拒絕了，說商品有使用痕跡，但我根本沒用過",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "客戶對於退貨被拒絕感到不滿，可先由AI安撫並協助處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "退貨",
+          "客服"
+        ],
+        "keywords_missing": [
+          "申訴"
+        ],
+        "best_faq_score": 0.7019,
+        "best_policy_score": 0.7314,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "return_007",
+      "query": "提交退貨申請後，等了三天還沒人來取件",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交由 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退貨",
+          "取件",
+          "聯繫"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7036,
+        "best_policy_score": 0.661,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於退貨申請的部分，想先向您說明，提交退貨申請後，我們的客服人員會盡快審核。審核通過後，系統會提供您退貨寄件標籤，屆時您再將商品包裝好寄回即可。目前可能還在審核階段，還請您耐心等候。若您已提交申請超過三個工作天，建議您可以提供訂單編號，讓我幫您查詢一下目前處理的進度。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 3,
+          "groundedness": 4,
+          "actionability": 3,
+          "critique": "回覆部分正確，有提到審核流程，但未明確指出退貨申請的標準處理時間，導致客戶等待。建議告知標準審核時間，並提供查詢進度的明確方式。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "return_008",
+      "query": "商品超過七天了，還可以退嗎？有特殊情況",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "鑑賞期",
+          "客服"
+        ],
+        "keywords_missing": [
+          "七天"
+        ],
+        "best_faq_score": 0.7246,
+        "best_policy_score": 0.7163,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "logistics_001",
+      "query": "物流顯示已送達，但我沒有收到包裹",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "意圖明確，交由 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "聯繫",
+          "物流",
+          "客服"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6988,
+        "best_policy_score": 0.7015,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，很抱歉您沒有收到包裹。為了幫您查詢，可以請您提供物流追蹤編號嗎？ 追蹤編號通常是 TW 開頭，後面接著一串數字。",
+        "judge_scores": {
+          "correctness": 4,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服回覆大致正確，但完整性不足。僅詢問了物流編號，未涵蓋知識庫中消費者可自行檢查的事項（地址、鄰居代收等），也未提及超過預計到貨日多久可聯繫客服。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "logistics_002",
+      "query": "我的包裹追蹤碼 TW-9876543210 現在在哪裡？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶詢問包裹位置，AI 可處理",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，您的包裹目前正在配送中，追蹤碼是 TW-9876543210，由黑貓宅急便承運。包裹現在位於信義配送站，預計 2026 年 3 月 19 日下午 6 點送達。 另外，您的包裹可以攔截更改地址，但需要支付 NT$100 的費用，且僅限於配送中且未進入最後一哩段。請問您需要攔截更改地址嗎？",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 4,
+          "groundedness": 2,
+          "actionability": 3,
+          "critique": "客服直接告知包裹位置及預計送達時間，但知識庫中沒有提供此類資訊。主動提供更改地址的選項是好的，但未說明如何操作。預計送達時間為2026年顯然是錯誤的。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "logistics_003",
+      "query": "包裹外盒嚴重破損，裡面的商品也壞了",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶明確指出包裹外盒破損且商品損壞，判斷為物流問題，可以嘗試由AI協助。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "損壞",
+          "理賠",
+          "照片"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7371,
+        "best_policy_score": 0.7124,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "logistics_004",
+      "query": "快遞說沒有人在家，但我一直都在，沒有收到任何電話或通知",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶明確指出物流配送問題，可以由AI初步處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "重新配送",
+          "聯繫"
+        ],
+        "keywords_missing": [
+          "快遞"
+        ],
+        "best_faq_score": 0.7237,
+        "best_policy_score": 0.6724,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，很抱歉造成您的困擾。為了幫您查詢詳細的物流狀態，可以請您提供一下包裹的物流追蹤編號嗎？ 格式範例：TW-XXXXXXXXXX",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 3,
+          "actionability": 2,
+          "critique": "客服回覆僅詢問物流編號，未提供任何基於知識庫的初步協助或資訊。遺漏了關於物流延遲、聯絡方式及可能處理方式的說明，客戶仍不清楚如何處理當前狀況。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "logistics_005",
+      "query": "想攔截包裹改收件地址，還來得及嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "意圖明確，AI 可以處理更改地址請求",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "recall_at_3": 0.333,
+        "keywords_found": [
+          "地址"
+        ],
+        "keywords_missing": [
+          "攔截",
+          "費用"
+        ],
+        "best_faq_score": 0.721,
+        "best_policy_score": 0.6546,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "logistics_006",
+      "query": "標準配送要幾天到貨？",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "配送",
+          "工作天",
+          "到貨"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.725,
+        "best_policy_score": 0.6296,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，請問您的訂單編號是 ORD-YYYY-XXXXXX 格式嗎？提供訂單編號後，我就可以幫您查詢預計到貨時間喔！",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 1,
+          "groundedness": 1,
+          "actionability": 2,
+          "critique": "客服未根據知識庫回答問題，反而要求提供訂單編號，但標準配送時間屬於常見問題，應直接回答。此回覆未提供任何有用的資訊，也未提供下一步的明確指示。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "logistics_007",
+      "query": "包裹說三天送到，但現在已經第五天了還沒到，是遺失了嗎",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.6,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶詢問包裹延遲送達，判斷為物流問題，交由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "追蹤",
+          "聯繫",
+          "客服"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7324,
+        "best_policy_score": 0.7326,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "客戶您好，想先跟您確認一下您的包裹追蹤編號，這樣我才能幫您查詢包裹的詳細運送狀態喔！",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 2,
+          "groundedness": 3,
+          "actionability": 2,
+          "critique": "客服僅要求提供追蹤編號，但未主動提供查詢方法或說明延遲原因，完整性不足。雖未捏造資訊，但沒有實際解決問題，可執行性低。應先提供查詢方式，並說明可能延遲的原因。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "payment_001",
+      "query": "用信用卡付款一直失敗，怎麼辦？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "客戶詢問信用卡付款失敗問題，可由AI嘗試協助。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "付款",
+          "信用卡",
+          "銀行"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7727,
+        "best_policy_score": 0.5809,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "Thought: 知識庫中提供了付款失敗的可能原因和解決方式，我可以將這些資訊整理後提供給客戶。\nAction: ANSWER: 您好，信用卡付款失敗可能的原因有以下幾種，您可以參考看看：\n\n1. **信用卡被拒**：\n   - 確認卡片是否已過期\n   - 確認額度是否足夠\n   - 聯繫發卡銀行確認是否有海外交易限制\n   - 嘗試更換其他付款方式\n\n2. **網頁超時**：\n   - 重新整理頁面，查看訂單是否已成立\n   - 至「我的訂單」確認，避免重複付款\n\n3. **行動支付失敗**：\n   - 確認 App 已更新至最新版本\n   - 確認帳戶餘額足夠\n\n如果以上方法都無法解決問",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "客服回覆完全正確且完整，涵蓋了所有可能原因和解決方案，並提供清晰的後續步驟指引與聯絡方式，確保客戶能有效解決問題。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "payment_002",
+      "query": "請問有哪些付款方式可以選擇？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "問題意圖明確，AI 可以處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "付款方式",
+          "信用卡"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7395,
+        "best_policy_score": 0.5936,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，ShopSmart 支援多種付款方式喔！包含信用卡（VISA、Mastercard、JCB，支援分期）、LINE Pay、街口支付、Apple Pay、Google Pay、ATM 轉帳（須於 24 小時內完成）、貨到付款（部分商品可選，限台灣本島，加收 30 元手續費）以及超商付款（7-11、全家，須於 3 天內繳費）。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "回覆完全正確且完整，基於知識庫。但缺少付款失敗或退款等相關資訊，若能主動提供，可更完善。缺少客服聯繫方式。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "payment_003",
+      "query": "訂單顯示未付款，但我剛剛已經付款了，錢也被扣了",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "客戶已付款但訂單顯示未付款，可嘗試由AI協助確認並解決。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "付款",
+          "確認",
+          "等待"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6422,
+        "best_policy_score": 0.5605,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "payment_004",
+      "query": "可以貨到付款嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "客戶詢問付款方式，AI Agent 可以回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "貨到付款",
+          "付款方式"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6726,
+        "best_policy_score": 0.5996,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，ShopSmart 支援貨到付款，但僅限台灣本島，且會加收 30 元手續費。請問還有其他想了解的嗎？",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "回答正確且完整，基於知識庫。但可執行性稍弱，可以更主動提供後續服務或相關資訊連結，例如直接提供付款方式頁面連結。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "payment_005",
+      "query": "如何申請電子發票？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "客戶諮詢電子發票申請方式，可由 AI 協助。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "發票",
+          "電子"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7543,
+        "best_policy_score": 0.5901,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，申請電子發票的方式如下：\n- 系統預設開立電子發票，下單時可輸入載具號碼（手機條碼或自然人憑證）。\n- 如需公司統編（三聯式發票），請於下單時填寫公司抬頭與統一編號。\n- 電子發票將於出貨後 2 個工作天開立並上傳至財政部平台。\n- 如果您需要補開實體發票，請聯繫客服，可能需要 7-14 個工作天。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "回覆完全基於知識庫，準確且完整地解答了客戶關於電子發票申請的問題。提供了清晰的步驟，但如果能直接提供客服聯繫方式會更佳。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "payment_006",
+      "query": "可以分期付款嗎？分幾期？有手續費嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "客戶詢問分期付款相關問題，交由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "分期",
+          "付款"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6459,
+        "best_policy_score": 0.5967,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "account_001",
+      "query": "忘記密碼了，怎麼重設？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "客戶要重設密碼，AI Agent 可以協助處理。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "密碼",
+          "重設",
+          "信箱"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7523,
+        "best_policy_score": 0.5593,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於忘記密碼的問題，您可以按照以下步驟重設密碼：\n\n1. 前往登入頁面，點擊「忘記密碼」。\n2. 輸入您的註冊信箱。\n3. 查收重設密碼信（也請檢查垃圾郵件）。\n4. 點擊信中連結（有效期 30 分鐘），設定新密碼。\n5. 使用新密碼登入。\n\n如果您的註冊信箱已經不再使用，請聯繫客服提供身份驗證協助。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "客服回覆完全正確、完整，且完全基於知識庫，提供了清晰明確的重設密碼步驟，以及信箱不再使用的備案，可執行性高。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "account_002",
+      "query": "帳號被鎖住無法登入，怎麼解鎖？",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "帳號被鎖住需要人工介入處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "帳號",
+          "客服"
+        ],
+        "keywords_missing": [
+          "解鎖"
+        ],
+        "best_faq_score": 0.6844,
+        "best_policy_score": 0.5777,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "account_003",
+      "query": "我的會員點數怎麼查看？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "客戶詢問會員點數查詢方式，AI Agent 可以回答。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "會員",
+          "查詢"
+        ],
+        "keywords_missing": [
+          "點數"
+        ],
+        "best_faq_score": 0.7246,
+        "best_policy_score": 0.5441,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，查詢會員點數可以到「我的帳號 → 積分紀錄」查看喔！每消費 NT$100 可以獲得 1 點積分，積分可以用於結帳時折抵（100 點 = NT$10），積分有效期為 2 年。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "回覆完全正確，資訊完整且基於知識庫。提供查詢路徑，但可再更明確引導至「我的帳號」位置，例如提供連結。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "account_004",
+      "query": "想更改帳號綁定的手機號碼",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "帳號",
+          "修改"
+        ],
+        "keywords_missing": [
+          "手機"
+        ],
+        "best_faq_score": 0.6833,
+        "best_policy_score": 0.5746,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，要更改帳號綁定的手機號碼，請依照以下步驟操作：\n1. 登入後點擊右上角頭像，選擇「帳號設定」。\n2. 在帳號設定中，您可以修改姓名、電話、收件地址、電子信箱等資訊。\n3. 修改電話號碼時，為保護帳號安全，系統會要求您輸入目前密碼進行驗證。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "回覆完全正確且完整，提供了清晰的操作步驟，並完全基於知識庫內容，客戶能清楚知道如何更改手機號碼。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "account_005",
+      "query": "如何升級會員等級？有什麼優惠？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "客戶諮詢會員升級和優惠，可以由 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "recall_at_3": 0.333,
+        "keywords_found": [
+          "會員"
+        ],
+        "keywords_missing": [
+          "等級",
+          "升級"
+        ],
+        "best_faq_score": 0.6752,
+        "best_policy_score": 0.5724,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "complaint_001",
+      "query": "你們的服務真的很差，每次都出問題，這次要嚴正抗議！",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "general_complaint",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "客戶投訴服務問題，交由AI以同理語氣回應",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "抱歉讓您有不好的體驗，我非常理解您的心情。請問這次遇到了什麼具體問題呢？請您詳細描述一下，我會盡力協助您解決。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 1,
+          "groundedness": 5,
+          "actionability": 1,
+          "critique": "回覆正確且基於知識庫，但未提供任何具體解決方案或步驟，完整性和可執行性不足。應針對客戶抱怨詢問具體問題，並提供相應的解決方案選項。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "complaint_002",
+      "query": "客服處理問題的態度讓我很不滿，沒有誠意解決",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "general_complaint",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "客戶抱怨客服態度，交由 AI 以同理語氣回應。",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "complaint_003",
+      "query": "等了兩週還沒解決我的問題，到底有沒有在處理",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "general_complaint",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "客戶抱怨處理時間過長，交由AI以同理心回應",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，對於讓您久候感到非常抱歉。為了瞭解您的問題處理進度，能否請您提供訂單編號或相關的商品資訊，以便我能更快速地查詢？一般來說，商品出貨後約 1-3 個工作天送達，退款則依付款方式需要 3-7 個工作天不等。我會盡快協助您確認目前狀況。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 4,
+          "actionability": 3,
+          "critique": "回覆禮貌但未針對客戶問題提供明確資訊，僅泛泛提及出貨和退款時間。缺乏針對延遲未解決問題的具體處理方案，未有效利用知識庫資訊，需引導客戶提供訂單資訊以查詢。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "other_001",
+      "query": "你們有實體店面嗎？在哪裡？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "問題明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.5,
+        "keywords_found": [
+          "客服"
+        ],
+        "keywords_missing": [
+          "詢問"
+        ],
+        "best_faq_score": 0.6055,
+        "best_policy_score": 0.5905,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "other_002",
+      "query": "如何成為平台賣家？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "意圖明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.5,
+        "keywords_found": [
+          "申請"
+        ],
+        "keywords_missing": [
+          "賣家"
+        ],
+        "best_faq_score": 0.6011,
+        "best_policy_score": 0.5911,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "human_001",
+      "query": "我的帳號一直有異常登入紀錄，懷疑被盜了，很緊急",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.8,
+        "expected_route": "queries.human",
+        "expected_intent": "account_issue",
+        "routing_reason": "帳號安全問題，疑似被盜，需要真人介入",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_002",
+      "query": "我已經和律師聯繫，準備對你們提出法律訴訟",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "general_complaint",
+        "actual_emotion_score": 0.95,
+        "expected_route": "queries.human",
+        "expected_intent": "general_complaint",
+        "routing_reason": "客戶提及法律訴訟，轉由真人處理",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_003",
+      "query": "我要求和真人客服對話，不要機器人",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.human",
+        "expected_intent": "other",
+        "routing_reason": "客戶明確要求真人",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_004",
+      "query": "我懷疑這個平台是詐騙，我要報警處理",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.9,
+        "expected_route": "queries.human",
+        "expected_intent": "general_complaint",
+        "routing_reason": "疑似詐騙，轉交真人處理",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_005",
+      "query": "我的個人資料，包含信用卡號碼，好像外洩了，怎麼辦",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.9,
+        "expected_route": "queries.human",
+        "expected_intent": "account_issue",
+        "routing_reason": "疑似詐騙或帳號被盜，需真人處理",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_006",
+      "query": "我要向消費者保護委員會申訴，請給我貴公司的相關資料",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.human",
+        "actual_intent": "general_complaint",
+        "actual_emotion_score": 0.9,
+        "expected_route": "queries.human",
+        "expected_intent": "general_complaint",
+        "routing_reason": "客戶提及申訴，可能涉及法律問題，轉由真人客服處理",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "clarify_001",
+      "query": "我有問題",
+      "category": "clarification",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "responses.completed",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.3,
+        "expected_route": "responses.completed",
+        "expected_intent": "other",
+        "routing_reason": "問題不明確，回覆澄清問題",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "clarify_002",
+      "query": "怎麼辦",
+      "category": "clarification",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "responses.completed",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.3,
+        "expected_route": "responses.completed",
+        "expected_intent": "other",
+        "routing_reason": "問題不明確，回覆澄清問題",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "clarify_003",
+      "query": "幫我查一下",
+      "category": "clarification",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "responses.completed",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "responses.completed",
+        "expected_intent": "other",
+        "routing_reason": "問題不明確，回覆澄清問題",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "emotional_001",
+      "query": "你們憑什麼！我要立刻退貨！這已經第三次出問題了！",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.8,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "客戶情緒激動，但意圖明確，由AI以同理語氣回應。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "理解",
+          "退貨",
+          "申請"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6623,
+        "best_policy_score": 0.67,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，非常抱歉給您帶來了困擾！為了更了解情況並協助您處理退貨事宜，能否請您提供訂單編號呢？我會盡快為您查詢並提供協助。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 4,
+          "actionability": 2,
+          "critique": "客服有禮貌地回應了客戶的激動情緒，但沒有直接提供退貨資訊，而是要求提供訂單編號，行動指引不足。未主動告知退貨流程和注意事項，完整性較差。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "emotional_002",
+      "query": "氣死我了！包裹到底在哪！追蹤頁面三天都沒更新！",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.8,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶情緒激動，但問題明確，由 AI 以同理語氣回應",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "理解",
+          "物流",
+          "聯繫"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6505,
+        "best_policy_score": 0.6538,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，非常抱歉包裹追蹤資訊沒有及時更新，為了能幫您查詢包裹的最新狀態，請您提供物流追蹤編號，格式如 TW-XXXXXXXXXX，謝謝。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服有禮貌且根植於知識庫，但未提供具體等待時間或處理流程，未能安撫顧客的焦慮情緒。應主動告知大致處理時間及可能原因，並提供查詢進度的管道。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "emotional_003",
+      "query": "有點擔心我的退款什麼時候會到，已經等了一個禮拜了",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退款",
+          "工作天"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.717,
+        "best_policy_score": 0.6417,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "親愛的客戶您好，退款時間依您的付款方式而有所不同，信用卡退款大約需要 5-7 個工作天（依銀行作業）。由於您已經等候一個禮拜，建議您可以到「我的訂單 → 退款記錄」查詢退款進度喔！",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 4,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "客服回覆正確且根植於知識庫，提供了信用卡退款所需時間。雖然提及查詢退款紀錄，但可更具體引導客戶，例如提供查詢路徑截圖或更詳細的操作說明。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "emotional_004",
+      "query": "我不是要抱怨，只是想了解一下如果商品損壞的退換貨流程",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退換貨",
+          "流程",
+          "申請"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7616,
+        "best_policy_score": 0.7352,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於商品損壞的退換貨流程，根據我們的政策：\n\n1.  **適用退貨情形：** 如果您收到的商品有製造瑕疵或在運送途中造成損壞，都是可以退貨的。此外，如果您收到的商品與訂購商品不符（品項、顏色、尺寸），也可以申請退貨。\n2.  **退貨程序：**\n    *   請您登入「我的訂單」提交退貨申請。\n    *   我們的客服審核後會提供您退貨標籤。\n    *   請您將商品依原包裝寄回，退貨運費將由我們平台支付。\n    *   我們收到商品後，會於 3 個工作天內完成驗收。\n    *   驗收通過後，會在 5-7 個工作天內將款項退回至您原付款帳戶。\n\n另外，若您收到包裹時發現外包裝",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "回覆完整且正確，詳細說明了退換貨流程和注意事項，並提供清晰的操作指示，能有效協助客戶解決問題。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "emotional_005",
+      "query": "這真的很讓我失望，訂了很久的商品現在說缺貨了",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶抱怨訂單缺貨，判斷為訂單問題，交由 AI 處理。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "recall_at_3": 0.333,
+        "keywords_found": [
+          "訂單"
+        ],
+        "keywords_missing": [
+          "抱歉",
+          "缺貨"
+        ],
+        "best_faq_score": 0.6245,
+        "best_policy_score": 0.6474,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，對於商品缺貨給您帶來不便，我們深感抱歉。為了能盡快幫您查詢訂單狀況，請您提供訂單編號（格式：ORD-YYYY-XXXXXX），謝謝。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服回覆正確且基於知識庫，但未提供具體的解決方案或選項。僅要求提供訂單編號，缺乏實質幫助，降低了完整性和可執行性。可以考慮主動提供缺貨處理方案。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_001",
+      "query": "我的訂單有問題，付款也有問題，還有想換貨",
+      "category": "edge_case",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry, return_refund, payment_issue",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶同時提及訂單、付款和換貨，需要 AI 判斷具體問題",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "訂單",
+          "協助"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7419,
+        "best_policy_score": 0.6681,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，我是您的智能客服。首先，為了能更有效率地協助您處理訂單問題，請您提供訂單編號，我才能查詢您的訂單狀態。\n\n針對付款問題，常見的原因包含信用卡被拒、網頁超時或行動支付失敗等，您可以參考我提供的資訊檢查看看。\n\n關於換貨，如果是商品瑕疵或送錯商品，請您在收到商品7天內，登入「我的訂單」並選擇「申請換貨」，填寫原因並上傳照片。\n\n請您提供訂單編號，我會盡快為您查詢。",
+        "judge_scores": {
+          "correctness": 4,
+          "completeness": 4,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "回覆大致正確且根植於知識庫，但針對付款問題的解決方式略嫌籠統，可更具體引導客戶。缺少訂單編號的要求稍嫌不足，應明確指出提供訂單編號是為了查詢訂單付款狀態。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_002",
+      "query": "我跟朋友各買了同款商品，我的壞了但他的好的，這樣可以換嗎？",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，可由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "換貨",
+          "申請",
+          "商品"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7212,
+        "best_policy_score": 0.6759,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "親愛的客戶您好，針對您商品損壞的情況，您可以申請換貨。請您登入「我的訂單」，選擇「申請換貨」，並填寫換貨原因並上傳商品照片。我們的客服人員會盡快審核，如果通過，我們會寄出新的商品，並提供退回標籤，請您將原商品寄回，我們確認後會完成換貨。",
+        "judge_scores": {
+          "correctness": 4,
+          "completeness": 3,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "回覆基於知識庫，流程描述正確，但忽略了判斷是否能換貨的關鍵條件（7天內、商品完整性等）。另外，未詢問購買時間也可能導致後續流程無法進行。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_003",
+      "query": "密碼忘了，但帳號裡還有點數，點數會不會不見",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "密碼",
+          "重設"
+        ],
+        "keywords_missing": [
+          "點數"
+        ],
+        "best_faq_score": 0.6811,
+        "best_policy_score": 0.591,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，別擔心，忘記密碼時，您可以透過以下步驟重設密碼：\n1. 前往登入頁面，點擊「忘記密碼」。\n2. 輸入您的註冊信箱。\n3. 查收重設密碼信（請也檢查垃圾郵件）。\n4. 點擊信中連結（有效期 30 分鐘），設定新密碼。\n5. 使用新密碼登入。\n\n通常情況下，帳號內的點數不會因為忘記密碼而消失，您可以登入後查看您的點數紀錄。如果重設密碼有任何問題，或發現帳號有異常狀況，請立即聯繫客服，我們會盡快協助您處理。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "客服回覆完整且正確，提供了重設密碼的步驟，並告知點數通常不會消失，同時提醒客戶若有異常可聯繫客服。所有資訊皆來自知識庫，且具體可行。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_004",
+      "query": "收到的商品沒問題，但包裝盒破了，我想要一個完整的包裝盒",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶要求更換包裝盒，AI 可以處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "聯繫",
+          "客服",
+          "包裝"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7313,
+        "best_policy_score": 0.7221,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "edge_005",
+      "query": "幫我退貨，退款直接打現金給我",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交由 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.5,
+        "keywords_found": [
+          "退款"
+        ],
+        "keywords_missing": [
+          "退款方式"
+        ],
+        "best_faq_score": 0.6861,
+        "best_policy_score": 0.6734,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，請問您收到商品是否還在7天鑑賞期內呢？如果是的話，您可以登入「我的訂單」提交退貨申請。另外，由於您希望以現金方式退款，我們將會把款項退到您的銀行帳戶，所以需要您提供您的銀行帳戶資訊喔！",
+        "judge_scores": {
+          "correctness": 4,
+          "completeness": 3,
+          "groundedness": 4,
+          "actionability": 4,
+          "critique": "回覆大致正確，但未完整說明退貨流程，且現金退款說法不正確（應退回原付款帳戶）。缺少鑑賞期計算方式的說明。但有提供下一步行動的指引。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_006",
+      "query": "我的包裹送到我家，但地址不對，這個不是我的東西",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.5,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶明確指出包裹地址錯誤，可嘗試由 AI 協助。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "物流",
+          "客服",
+          "退回"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6653,
+        "best_policy_score": 0.6631,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，很抱歉包裹送錯地址給您了。為了幫您查詢包裹的詳細運送資訊，可以請您提供一下包裹的追蹤編號嗎？ 追蹤編號通常是 TW-XXXXXXXXXX 這樣的格式。",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 2,
+          "groundedness": 1,
+          "actionability": 3,
+          "critique": "客服回覆未基於知識庫，且未解決客戶問題（包裹地址錯誤）。要求追蹤編號雖合理，但應先提供初步解決方案或相關資訊，例如如何處理非本人包裹。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_007",
+      "query": "退貨退款跟物流問題一起問可以嗎？我的包裹破損，我要退貨，退款要到哪個帳號",
+      "category": "edge_case",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund, logistics",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退貨",
+          "退款",
+          "申請"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7158,
+        "best_policy_score": 0.7001,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，退貨退款和物流問題可以一起處理的。針對包裹破損問題，請您先提供訂單編號和包裹破損的照片，我們會盡快為您安排免費換貨或全額退款。退款會退回您原付款的帳戶。請您放心。",
+        "judge_scores": {
+          "correctness": 4,
+          "completeness": 3,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "回覆大致正確，基於知識庫。但未完整說明退款帳戶問題（若非原付款帳戶），且僅要求提供照片，未提及拒收選項。可再更具體說明下一步驟。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_008",
+      "query": "ㄏㄟ你好，我的東西有一點點小問題，就是...嗯...怎麼說呢",
+      "category": "edge_case",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "responses.completed",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "問題不明確，回覆澄清問題",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "edge_009",
+      "query": "客製化商品可以退嗎？我訂做了一個客製馬克杯",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "客製化",
+          "退貨",
+          "鑑賞期"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6507,
+        "best_policy_score": 0.6449,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，根據我們的退換貨政策，客製化商品屬於「不適用鑑賞期」的商品，因此很抱歉，您訂做的客製馬克杯可能無法退貨。 網頁上商品購買前都會清楚標示是否適用鑑賞期，建議您下次購買客製化商品前多加留意喔！",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 4,
+          "groundedness": 5,
+          "actionability": 2,
+          "critique": "回覆正確且基於知識庫。完整性尚可，但可以更主動提供解決方案，例如建議客戶可否轉贈他人。可執行性較弱，未提供其他建議或選項，僅告知無法退貨。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "edge_010",
+      "query": "我是要退貨還是換貨好？哪個比較快拿到錢？",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退貨",
+          "換貨",
+          "退款"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7053,
+        "best_policy_score": 0.6789,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於退貨和換貨哪個比較快拿到錢的問題，退貨流程在平台收到退回商品並驗收通過後，約 5-7 個工作天會退款至您的原付款帳戶。換貨的話，因為需要等待我們寄出新的商品，您再將原商品寄回，整體流程時間可能會比較長喔。如果您希望盡快拿到錢，退貨會是比較快的選擇。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "客服回覆完全基於知識庫，正確且完整地回答了客戶的問題。針對退貨和換貨的流程時間差異進行了明確說明，有助於客戶做出選擇。如果能提供更具體的下一步操作指示會更好。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "kb_gap_001",
+      "query": "你們的商品有保固嗎？保固期多長？",
+      "category": "knowledge_gap",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "意圖明確，可以嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "保固",
+          "客服"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6316,
+        "best_policy_score": 0.7379,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，我們的商品有提供保固喔！電子產品（如手機、平板、電腦）提供 1 年原廠保固，家電產品則依品牌不同，提供 1-2 年的原廠保固。一般消費品則提供 7 天的到貨瑕疵換貨。具體的保固期限，建議您可以參考商品頁面的說明喔！",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "回覆完全正確且完整，涵蓋了不同類型商品的保固期限，資訊都來自知識庫。建議可更明確提供查詢商品頁面的方式，增加可執行性。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "kb_gap_002",
+      "query": "我想問一些完全不相關的問題，比如說今天天氣好不好",
+      "category": "knowledge_gap",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "問題與電商客服無關，轉交AI嘗試回答",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "kb_gap_003",
+      "query": "我買的商品在使用說明書上說有安全疑慮，我擔心有毒",
+      "category": "knowledge_gap",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.6,
+        "expected_route": "queries.human",
+        "expected_intent": "other",
+        "routing_reason": "客戶擔心商品安全疑慮，可以嘗試由AI判斷商品並給予適當回覆。",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "multi_turn_001",
+      "query": "上次你說退貨要3-5天，但現在已經第7天了還沒退款",
+      "category": "multi_turn",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退款",
+          "工作天",
+          "確認"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7362,
+        "best_policy_score": 0.6605,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": true,
+        "actual_answer": null,
+        "error": "",
+        "judge_scores": null
+      }
+    },
+    {
+      "id": "multi_turn_002",
+      "query": "之前有問過退貨問題，現在想確認退款進度",
+      "category": "multi_turn",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退款",
+          "查詢",
+          "確認"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7168,
+        "best_policy_score": 0.664,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於退款進度，根據我們的退貨政策，商品驗收通過後，我們會於 5-7 個工作天內將款項退回至您原付款的帳戶。您可以在「我的訂單 → 退款記錄」中查詢退款進度。若您使用信用卡付款，退款時間可能會因為銀行作業時間而稍有不同。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "回覆完全正確且完整，涵蓋了退款時間、查詢方式等資訊，並與知識庫內容一致。同時也提供了清晰的下一步指引，方便客戶查詢退款進度。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "multi_turn_003",
+      "query": "昨天問的那個物流問題，包裹還是沒送到，要怎麼辦",
+      "category": "multi_turn",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.6,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶詢問包裹未送達，AI可先查詢物流狀態並提供協助。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "物流",
+          "聯繫",
+          "客服"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7447,
+        "best_policy_score": 0.7362,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "好的，我了解了。\n\nThought: 客戶詢問物流問題，但沒有提供物流追蹤編號，需要先詢問客戶提供。\nAction: 無需工具。\nObservation: 詢問客戶提供物流追蹤編號。\n\n好的，請問您是否有物流追蹤編號呢？ 麻煩提供一下，我可以幫您查詢包裹的最新狀態。 追蹤編號通常是 TW-XXXXXXXXXX 這樣的格式。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服回覆正確且基於知識庫，但僅詢問追蹤編號，未提供任何問題解決方案或初步引導。缺乏主動性，完整性不足，應提供更多資訊。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "colloquial_001",
+      "query": "蛤退貨不是說有七天嗎，為什麼說不能退",
+      "category": "colloquial",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.6,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 0.667,
+        "keywords_found": [
+          "鑑賞期",
+          "退貨條件"
+        ],
+        "keywords_missing": [
+          "七天"
+        ],
+        "best_faq_score": 0.744,
+        "best_policy_score": 0.7398,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，依照消費者保護法，您在收到商品後有七天鑑賞期，期間可以申請退貨。請問您是否已收到商品超過七天？或者您購買的商品屬於生鮮食品、客製化商品等不適用鑑賞期的商品呢？如果是的話，可能就無法退貨囉。",
+        "judge_scores": {
+          "correctness": 4,
+          "completeness": 3,
+          "groundedness": 5,
+          "actionability": 2,
+          "critique": "回覆大致正確，有提到七天鑑賞期。但未提供具體退貨步驟，導致可執行性較低。應引導客戶至「我的訂單」提交申請，並說明特殊商品例外。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "colloquial_002",
+      "query": "哈囉我的東西好像還沒到齁，是還在路上嗎？",
+      "category": "colloquial",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶詢問訂單狀態，可由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "包裹",
+          "物流",
+          "追蹤"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.734,
+        "best_policy_score": 0.7035,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "您好，想幫您查詢訂單狀態，請問您的訂單號碼是 ORD-YYYY-XXXXXX 格式嗎？提供訂單號碼才能幫您查詢喔！",
+        "judge_scores": {
+          "correctness": 2,
+          "completeness": 1,
+          "groundedness": 3,
+          "actionability": 2,
+          "critique": "客服沒有直接回答包裹是否在路上的問題，而是要求提供訂單號碼，這並未有效利用知識庫。雖然要求訂單號碼是合理的，但應先告知大致的配送時間範圍。",
+          "error": "",
+          "overall": 2,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "colloquial_003",
+      "query": "不好意思想問一下 我剛買的東西能不能不要了謝謝",
+      "category": "colloquial",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "客戶想取消剛購買的商品，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "取消",
+          "訂單"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7381,
+        "best_policy_score": 0.7143,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": false,
+        "escalated": false,
+        "actual_answer": "親愛的顧客您好，為了能協助您查詢訂單狀態，請問您方便提供訂單編號嗎？ 訂單編號格式為 ORD-YYYY-XXXXXX，謝謝。",
+        "judge_scores": {
+          "correctness": 1,
+          "completeness": 1,
+          "groundedness": 1,
+          "actionability": 1,
+          "critique": "客服未根據知識庫內容回覆，直接詢問訂單編號，未能直接判斷客戶是否符合取消訂單的條件。回覆沒有提供任何實質幫助，客戶無法得知下一步該怎麼做。",
+          "error": "",
+          "overall": 1,
+          "passed": false
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "colloquial_004",
+      "query": "錢扣了但沒收到東西也沒有任何通知這正常嗎",
+      "category": "colloquial",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.7,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "客戶詢問訂單相關問題，可由AI協助查詢",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "付款",
+          "訂單",
+          "確認"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6544,
+        "best_policy_score": 0.6612,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "親愛的客戶您好，為了能更準確地查詢您的訂單狀態，可以請您提供訂單編號嗎？ 訂單編號格式為 ORD-YYYY-XXXXXX。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 5,
+          "actionability": 3,
+          "critique": "客服詢問訂單編號，雖然有助於查詢，但未主動提供任何解決方案或資訊，完整性不足。僅初步詢問，缺乏具體指引。回覆基於尋找訂單，故根植性高。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "boundary_001",
+      "query": "我想退貨。謝謝。",
+      "category": "boundary",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，交由AI處理",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "退貨",
+          "流程",
+          "申請"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7389,
+        "best_policy_score": 0.7094,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於退貨，根據我們的退貨政策，您可以在收到商品後的7天鑑賞期內無條件退貨。以下是退貨的詳細流程：\n\n1.  登入「我的訂單」，選擇要退貨的訂單\n2.  點擊「申請退貨」，填寫退貨原因\n3.  系統會提供退貨寄件標籤（免運費）\n4.  將商品連同原包裝寄回，保留寄件收據\n5.  我們收到商品後 3 個工作天內完成驗收\n6.  驗收通過後 5-7 個工作天退款\n\n此外，以下情況我們可能無法接受您的退貨申請：\n1.  超過7天鑑賞期\n2.  商品已使用或安裝\n3.  人為損壞\n4.  缺少原始配件\n5.  不適用鑑賞期商品（例如：客製化商品、衛生用品等）\n\n希望這些資訊對您有幫助！",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "回覆完整且正確，完全基於提供的知識庫，並提供了清晰的退貨流程和可能無法退貨的情況，易於客戶理解和執行。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "boundary_002",
+      "query": "訂單",
+      "category": "boundary",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "responses.completed",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "問題不明確，回覆澄清問題",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，請問您的訂單號碼是？ 格式如 ORD-2026-001234，提供訂單號碼後我才能幫您查詢訂單狀態喔。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 4,
+          "actionability": 3,
+          "critique": "客服詢問訂單編號以查詢訂單狀態，方向正確，但未直接提供查詢訂單狀態的各種方式（官網、連結、客服專線），完整性不足。可以更主動提供資訊。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "boundary_003",
+      "query": "你好，我想請問一下貴平台的退換貨政策的具體規定，特別是關於鑑賞期的計算方式、不適用退貨的商品類別、退",
+      "category": "boundary",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "意圖明確，退換貨政策詢問，交由 AI 處理。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "鑑賞期",
+          "退貨",
+          "退款"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.7165,
+        "best_policy_score": 0.7083,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "Thought: 現在有了鑑賞期計算方式和退款時間的資訊。可以整理後回答客戶。\nAction: ANSWER: 您好，關於貴平台的退換貨政策，具體規定如下：\n\n1.  **鑑賞期計算方式**：依消費者保護法，您享有商品到貨後 7 天內的鑑賞期，期間內可無條件退貨。\n2.  **不適用退換貨情形**：\n    *   超過 7 天鑑賞期且非商品瑕疵\n    *   商品已使用或安裝\n    *   人為損壞\n    *   缺少原始配件\n    *   客製化、易腐壞、衛生類商品\n    *   贈品或活動商品（除非有品質問題）\n3.  **退貨條件**：\n    *   鑑賞期內（收到商品 7",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 5,
+          "groundedness": 5,
+          "actionability": 5,
+          "critique": "回覆完整且正確，涵蓋了客戶問題的所有面向，並基於知識庫內容。退貨條件和程序描述清晰，客戶可根據指示執行。",
+          "error": "",
+          "overall": 5,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "boundary_004",
+      "query": "操你媽的，你們這個爛平台！包裹爛掉了！賠錢！",
+      "category": "boundary",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.95,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "客戶情緒激烈，但意圖明確，交由AI以同理語氣處理。",
+        "error": ""
+      },
+      "layer2": {
+        "passed": true,
+        "recall_at_3": 1.0,
+        "keywords_found": [
+          "理解",
+          "處理",
+          "損壞"
+        ],
+        "keywords_missing": [],
+        "best_faq_score": 0.6639,
+        "best_policy_score": 0.6392,
+        "faq_result_count": 3,
+        "error": ""
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，非常抱歉您的包裹發生了損壞，請您先別激動。為了能盡快協助您處理，請您提供您的物流追蹤編號，讓我查詢包裹的詳細狀態，以便釐清責任歸屬並提供您相應的賠償方案。",
+        "judge_scores": {
+          "correctness": 3,
+          "completeness": 2,
+          "groundedness": 4,
+          "actionability": 2,
+          "critique": "客服安撫情緒良好，但未提供具體處理步驟，僅要求提供物流編號，相較於知識庫提供的拒收或拍照等指示，不夠完整和可執行。應明確告知客戶可依循的退換貨流程。",
+          "error": "",
+          "overall": 3,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    },
+    {
+      "id": "boundary_005",
+      "query": "我已經申請退貨了，退款已退，但我想再問一下這次的退貨體驗",
+      "category": "boundary",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "意圖明確，交給 AI 處理",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "passed": true,
+        "escalated": false,
+        "actual_answer": "您好，關於退貨，根據我們的退貨政策，您可以在收到商品後的 7 天鑑賞期內無條件退貨。退貨流程一般是：您登入「我的訂單」提交退貨申請，客服審核後會提供退貨標籤，您可以將商品依原包裝寄回，退貨運費由我們支付。平台收到商品並驗收通過後，會在 5-7 個工作天內將款項退回您的原付款帳戶。請問您這次退貨體驗具體是指哪方面的呢？例如，您想了解退貨流程是否順暢，還是對退款時間有疑問呢？請您詳細說明，以便我能更好地協助您。",
+        "judge_scores": {
+          "correctness": 5,
+          "completeness": 4,
+          "groundedness": 5,
+          "actionability": 4,
+          "critique": "回覆正確且基於知識庫。完整說明了退貨流程，並主動詢問退貨體驗的具體面向，以便提供更精確的幫助，有助於問題解決，但可以更明確地詢問是否需要進一步協助。",
+          "error": "",
+          "overall": 4,
+          "passed": true
+        },
+        "forbidden_found": [],
+        "error": ""
+      }
+    }
+  ]
+}

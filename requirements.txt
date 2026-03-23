@@ -1,0 +1,11 @@
+confluent-kafka==2.5.0
+flask>=3.0
+google-genai
+chromadb==0.5.23
+redis[hnsw]>=5.0
+numpy
+pymongo>=4.6
+pytest==9.0.2
+pytest-cov
+python-dotenv
+google-api-core==2.30.0

@@ -1,0 +1,267 @@
+# version: "3.9"
+
+# ─── 共用環境變數 ────────────────────────────────────────────────────────────
+x-common-env: &common-env
+  KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+  CHROMA_HOST: chromadb
+  CHROMA_PORT: "8000"
+  FAQ_FILE: /app/backend/knowledge_base/ecommerce_faq.md
+  POLICY_FILE: /app/backend/knowledge_base/ecommerce_policy.md
+  GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+  GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.0-flash}
+  GEMINI_EMBED_MODEL: ${GEMINI_EMBED_MODEL:-gemini-embedding-001}
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  MONGODB_URI: mongodb://mongodb:27017
+  MONGODB_DB: ${MONGODB_DB:-ecommerce}
+  PYTHONUNBUFFERED: "1"
+  PYTHONPATH: /app/backend
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+# ─── 共用重啟策略 ────────────────────────────────────────────────────────────
+x-restart-policy: &restart-policy
+  restart: unless-stopped
+
+services:
+  # ── 基礎設施 ──────────────────────────────────────────────────────────────
+  # KRaft 模式：不需要 Zookeeper，Kafka 自身管理 metadata
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    hostname: kafka
+    ports:
+      - "9092:9092"      # 內部（容器間通訊）
+      - "9094:9094"      # 外部（宿主機存取）
+    environment:
+      # ── KRaft 核心設定 ──
+      KAFKA_NODE_ID: 1                                  # 節點唯一 ID（多節點叢集時每個節點需不同）
+      KAFKA_PROCESS_ROLES: "broker,controller"          # 單節點兼任 broker（處理訊息）+ controller（管理 metadata），取代 Zookeeper
+      CLUSTER_ID: "MkU3OEVBNTcwNTJENDM2Qk"             # base64 UUID，固定值確保容器重啟後 cluster 身份一致
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"    # Controller 選舉清單：ID=1 的節點監聽 kafka:9093
+
+      # ── Listener 設定 ──
+      # 定義三個 Listener，區分不同來源的連線：
+      #   INTERNAL  (9092)：容器之間互相通訊
+      #   CONTROLLER(9093)：KRaft controller 選舉專用，不對外開放
+      #   EXTERNAL  (9094)：宿主機（本機）連進容器用
+      KAFKA_LISTENERS: "INTERNAL://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:9094"
+      # 廣播給客戶端「來這裡連我」的實際位址（容器名稱 vs localhost）
+      KAFKA_ADVERTISED_LISTENERS: "INTERNAL://kafka:9092,EXTERNAL://localhost:9094"
+      # 每個 Listener 使用的安全協定（PLAINTEXT = 不加密，開發環境用）
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "INTERNAL"      # Broker 之間互連走 INTERNAL listener
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"     # Controller 通訊走 CONTROLLER listener
+
+      # ── 一般設定 ──
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1         # __consumer_offsets topic 副本數，單節點設 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1 # 交易狀態 log 副本數，單節點設 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1            # 最少 1 個 In-Sync Replica 即可（單節點）
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"           # Producer 發訊息到不存在的 topic 時自動建立
+      KAFKA_LOG_RETENTION_HOURS: 168                    # 訊息保留 7 天（168 小時）後自動刪除
+      KAFKA_MESSAGE_MAX_BYTES: 10485760                 # 單則訊息大小上限 10 MB
+      KAFKA_LOG_DIRS: "/var/lib/kafka/data"             # 訊息資料目錄（對應 volume kafka_data）
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "localhost:9092", "--list"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+    <<: *restart-policy
+
+  chromadb:
+    image: chromadb/chroma:0.5.23
+    hostname: chromadb
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma_seed:/chroma/chroma
+    environment:
+      CHROMA_SERVER_HOST: 0.0.0.0
+      CHROMA_SERVER_HTTP_PORT: "8000"
+      ANONYMIZED_TELEMETRY: "False"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    <<: *restart-policy
+
+  redis:
+    image: redis/redis-stack-server:latest
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    <<: *restart-policy
+
+  mongodb:
+    image: mongo:7.0
+    hostname: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'cat < /dev/null > /dev/tcp/localhost/27017'"]
+      interval: 30s
+      timeout: 5s
+      retries: 10
+    <<: *restart-policy
+
+  # ── Demo UI + Knowledge Base API ─────────────────────────────────────────
+  demo-ui:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: demo_app.py
+      PORT: "8080"
+      ENABLE_DOCKER_MANAGEMENT: "false"
+    ports:
+      - "8080:8080"
+    depends_on:
+      kafka:
+        condition: service_healthy
+      chromadb:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    <<: *restart-policy
+
+  # ── Producer ──────────────────────────────────────────────────────────────
+  producer:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: producer/producer.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+    profiles:
+      - interactive  # 只在互動模式啟動
+
+  # ── Router Agent ──────────────────────────────────────────────────────────
+  router-agent:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: router_agent/router_agent.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      chromadb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    <<: *restart-policy
+
+  # ── Resolution Agent ──────────────────────────────────────────────────────
+  resolution-agent:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: resolution_agent/resolution_agent.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      chromadb:
+        condition: service_healthy
+    <<: *restart-policy
+
+  # ── Consumers ─────────────────────────────────────────────────────────────
+  human-consumer:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/human_consumer.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    <<: *restart-policy
+
+  retry-consumer:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/retry_consumer.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+    <<: *restart-policy
+
+  dlq-handler:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/dlq_handler.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+    <<: *restart-policy
+
+  # ── Output Layer（三個獨立 Consumer Group，同訂閱 responses.completed）──
+  response-delivery:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/response_delivery.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    <<: *restart-policy
+
+  telemetry-consumer:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/telemetry_consumer.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    <<: *restart-policy
+
+  cost-tracker:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/cost_tracker.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    <<: *restart-policy
+
+  analytics-consumer:
+    build: .
+    environment:
+      <<: *common-env
+      SERVICE: consumers/analytics_consumer.py
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    <<: *restart-policy
+
+
+volumes:
+  kafka_data:
+    driver: local
+  redis_data:
+    driver: local
+  mongo_data:
+    driver: local

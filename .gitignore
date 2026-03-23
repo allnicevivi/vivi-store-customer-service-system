@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.DS_Store
+chroma_data/
+/tmp/dlq_records.jsonl
+.eval_results/
+.claude/
+CLAUDE.md
+docs/

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViviStore 客服系統 Demo</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+
+<!-- Top bar -->
+<header class="topbar">
+  <h1>🛒 ViviStore 客服系統 Demo</h1>
+  <span class="badge" id="svc-count">載入中...</span>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <h3>服務狀態</h3>
+  <div id="service-list"><div style="color:#4b5563;font-size:.82rem">尚未偵測到容器...</div></div>
+  <div style="margin-top:16px">
+    <h3>訊息流</h3>
+    <div style="font-size:.75rem; color:#475569; line-height:1.8; margin-top:6px;">
+      producer<br>
+      &nbsp;↓ queries.incoming<br>
+      &nbsp;[Router Agent]<br>
+      &nbsp;↓ 分流<br>
+      &nbsp;[Resolution Agent]<br>
+      &nbsp;↓ responses.completed<br>
+      &nbsp;response-delivery → MongoDB
+    </div>
+  </div>
+</aside>
+
+<!-- Main -->
+<main class="main">
+
+  <!-- Tab nav -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('chat')">💬 Chat</button>
+    <button class="tab-btn" onclick="switchTab('analytics')">📊 Analytics</button>
+    <button class="tab-btn" onclick="switchTab('usage')">💰 Usage</button>
+    <button class="tab-btn" onclick="switchTab('tickets')">🎫 Tickets</button>
+  </nav>
+
+  <!-- ── Tab: Chat ── -->
+  <div id="tab-chat" class="tab-content">
+    <div class="chat-area" id="chat-area">
+      <div class="empty-state" id="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        輸入問題開始 Demo
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <p id="wait-msg">⏳ 等待所有服務就緒...</p>
+      <div class="presets" id="presets"></div>
+      <div class="input-row">
+        <input type="text" id="query-input" placeholder="輸入客戶問題..." disabled/>
+        <button class="btn btn-blue" id="btn-send" onclick="sendQuery()" disabled>送出</button>
+      </div>
+    </div>
+
+    <button class="log-toggle" onclick="toggleLog()">▼ 服務 Log（點擊展開）</button>
+    <div class="log-panel hidden" id="log-panel"></div>
+  </div>
+
+  <!-- ── Tab: Analytics ── -->
+  <div id="tab-analytics" class="tab-content" style="display:none">
+    <div class="tab-scroll">
+      <div class="tab-toolbar">
+        <span class="tab-title">📊 Analytics</span>
+        <button class="btn btn-blue" onclick="loadAnalytics()">↻ 重新整理</button>
+      </div>
+
+      <!-- LLM Metrics KPI row -->
+      <div class="kpi-row" id="llm-kpi-row">
+        <div class="kpi-card"><div class="kpi-value" id="kpi-total-calls">—</div><div class="kpi-label">Total Calls</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="kpi-error-rate">—</div><div class="kpi-label">Error Rate</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="kpi-avg-latency">—</div><div class="kpi-label">Avg Latency (ms)</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="kpi-total-tokens">—</div><div class="kpi-label">Total Tokens</div></div>
+      </div>
+
+      <!-- Intent Distribution -->
+      <div class="analytics-section">
+        <h3>Intent Distribution</h3>
+        <div id="intent-distribution"><div class="no-data">尚無資料</div></div>
+      </div>
+
+      <!-- Escalation Rate -->
+      <div class="analytics-section">
+        <h3>Escalation Rate（近 7 天）</h3>
+        <div id="escalation-rate"><div class="no-data">尚無資料</div></div>
+      </div>
+
+      <!-- FAQ Gaps -->
+      <div class="analytics-section">
+        <h3>FAQ Gaps</h3>
+        <div id="faq-gaps"><div class="no-data">尚無資料</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tab: Usage ── -->
+  <div id="tab-usage" class="tab-content" style="display:none">
+    <div class="tab-scroll">
+      <div class="tab-toolbar">
+        <span class="tab-title">💰 Usage</span>
+        <input type="datetime-local" id="usage-from" class="dt-input">
+        <span style="color:#64748b">～</span>
+        <input type="datetime-local" id="usage-to" class="dt-input">
+        <button class="btn btn-blue" onclick="loadUsageFromUI()">查詢</button>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="kpi-row">
+        <div class="kpi-card"><div class="kpi-value" id="u-queries">—</div><div class="kpi-label">Queries</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="u-sessions">—</div><div class="kpi-label">Sessions</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="u-prompt-tokens">—</div><div class="kpi-label">Prompt Tokens</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="u-completion-tokens">—</div><div class="kpi-label">Completion Tokens</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="u-embedding-calls">—</div><div class="kpi-label">Embedding Calls</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="u-cost">—</div><div class="kpi-label">Cost (USD)</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="u-latency">—</div><div class="kpi-label">Avg Latency (ms)</div></div>
+      </div>
+
+      <!-- Per Session Average -->
+      <div class="analytics-section">
+        <h3>Per Session Average</h3>
+        <div id="usage-per-session"><div class="no-data">尚無資料</div></div>
+      </div>
+
+      <!-- By Route table -->
+      <div class="analytics-section">
+        <h3>By Route</h3>
+        <div id="usage-by-route"><div class="no-data">尚無資料</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tab: Tickets ── -->
+  <div id="tab-tickets" class="tab-content" style="display:none">
+    <div class="tab-scroll">
+      <div class="tab-toolbar">
+        <span class="tab-title">🎫 Open Tickets</span>
+        <span id="tickets-refresh-badge" class="refresh-badge"></span>
+        <button class="btn btn-blue" onclick="loadTickets()">↻ 重新整理</button>
+      </div>
+      <div id="tickets-container"><div class="no-data">尚無資料</div></div>
+    </div>
+  </div>
+
+</main>
+
+</div>
+
+<!-- 由伺服器注入示範問題清單 -->
+<script>
+  window.DEMO_QUESTIONS = {{ demo_questions | tojson }};
+</script>
+<script src="/static/app.js"></script>
+</body>
+</html>

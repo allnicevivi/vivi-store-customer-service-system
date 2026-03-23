@@ -1,0 +1,2057 @@
+{
+  "summary": {
+    "run_at": "2026-03-22T22:57:53.674000",
+    "dataset": "/Users/viviliu/Documents/10_Vivi/PcaHW/backend/evaluation/golden_dataset.json",
+    "total_cases": 78,
+    "layers_run": [
+      1,
+      2,
+      3
+    ],
+    "use_mock": false,
+    "layer1": {
+      "routing_accuracy": 0.872,
+      "intent_accuracy": 0.679,
+      "emotion_accuracy": 0.833,
+      "total": 78,
+      "route_pass": 68,
+      "intent_pass": 53
+    },
+    "layer2": {
+      "faq_recall_at_3": 0,
+      "pass_rate": 0.0,
+      "total_evaluated": 60
+    },
+    "elapsed_seconds": 5.6
+  },
+  "results": [
+    {
+      "id": "order_001",
+      "query": "我的訂單 ORD-2026-001234 什麼時候會到？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_002",
+      "query": "我昨天下的訂單可以取消嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_003",
+      "query": "出貨了嗎？我等好久了",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_004",
+      "query": "我買了3個商品但只收到2個，少了一個",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_005",
+      "query": "訂單狀態顯示已出貨但一週了還沒收到，怎麼回事？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.2,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_006",
+      "query": "請問訂單可以修改收件地址嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_007",
+      "query": "剛下單可以追加商品嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "order_008",
+      "query": "我的訂單 ORD-2026-005678 已付款但顯示未確認",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_001",
+      "query": "我想退貨，請問流程是什麼？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_002",
+      "query": "七天鑑賞期是從哪天開始算？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_003",
+      "query": "退款要多久才會到帳？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_004",
+      "query": "買的商品跟網頁描述不符，我要換貨",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_005",
+      "query": "食品類商品可以退貨嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_006",
+      "query": "我的退貨申請被拒絕了，說商品有使用痕跡，但我根本沒用過",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_007",
+      "query": "提交退貨申請後，等了三天還沒人來取件",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "return_008",
+      "query": "商品超過七天了，還可以退嗎？有特殊情況",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_001",
+      "query": "物流顯示已送達，但我沒有收到包裹",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_002",
+      "query": "我的包裹追蹤碼 TW-9876543210 現在在哪裡？",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_003",
+      "query": "包裹外盒嚴重破損，裡面的商品也壞了",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_004",
+      "query": "快遞說沒有人在家，但我一直都在，沒有收到任何電話或通知",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=logistics，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_005",
+      "query": "想攔截包裹改收件地址，還來得及嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_006",
+      "query": "標準配送要幾天到貨？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=logistics，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "logistics_007",
+      "query": "包裹說三天送到，但現在已經第五天了還沒到，是遺失了嗎",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "payment_001",
+      "query": "用信用卡付款一直失敗，怎麼辦？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=payment_issue，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "payment_002",
+      "query": "請問有哪些付款方式可以選擇？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=payment_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "payment_003",
+      "query": "訂單顯示未付款，但我剛剛已經付款了，錢也被扣了",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "payment_004",
+      "query": "可以貨到付款嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=payment_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "payment_005",
+      "query": "如何申請電子發票？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=payment_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "payment_006",
+      "query": "可以分期付款嗎？分幾期？有手續費嗎？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=payment_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "account_001",
+      "query": "忘記密碼了，怎麼重設？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "account_002",
+      "query": "帳號被鎖住無法登入，怎麼解鎖？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "account_003",
+      "query": "我的會員點數怎麼查看？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "account_004",
+      "query": "想更改帳號綁定的手機號碼",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "account_005",
+      "query": "如何升級會員等級？有什麼優惠？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "complaint_001",
+      "query": "你們的服務真的很差，每次都出問題，這次要嚴正抗議！",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "complaint_002",
+      "query": "客服處理問題的態度讓我很不滿，沒有誠意解決",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.2,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "complaint_003",
+      "query": "等了兩週還沒解決我的問題，到底有沒有在處理",
+      "category": "standard",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.2,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "other_001",
+      "query": "你們有實體店面嗎？在哪裡？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "other_002",
+      "query": "如何成為平台賣家？",
+      "category": "standard",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "human_001",
+      "query": "我的帳號一直有異常登入紀錄，懷疑被盜了，很緊急",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.human",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_002",
+      "query": "我已經和律師聯繫，準備對你們提出法律訴訟",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.human",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_003",
+      "query": "我要求和真人客服對話，不要機器人",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.human",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_004",
+      "query": "我懷疑這個平台是詐騙，我要報警處理",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.human",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_005",
+      "query": "我的個人資料，包含信用卡號碼，好像外洩了，怎麼辦",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "payment_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.human",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=payment_issue，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "human_006",
+      "query": "我要向消費者保護委員會申訴，請給我貴公司的相關資料",
+      "category": "human_escalation",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "general_complaint",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.human",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=general_complaint，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "clarify_001",
+      "query": "我有問題",
+      "category": "clarification",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.1,
+        "expected_route": "responses.completed",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "clarify_002",
+      "query": "怎麼辦",
+      "category": "clarification",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "responses.completed",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "clarify_003",
+      "query": "幫我查一下",
+      "category": "clarification",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "responses.completed",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "emotional_001",
+      "query": "你們憑什麼！我要立刻退貨！這已經第三次出問題了！",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "emotional_002",
+      "query": "氣死我了！包裹到底在哪！追蹤頁面三天都沒更新！",
+      "category": "emotional",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "emotional_003",
+      "query": "有點擔心我的退款什麼時候會到，已經等了一個禮拜了",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "emotional_004",
+      "query": "我不是要抱怨，只是想了解一下如果商品損壞的退換貨流程",
+      "category": "emotional",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "emotional_005",
+      "query": "這真的很讓我失望，訂了很久的商品現在說缺貨了",
+      "category": "emotional",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.3,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_001",
+      "query": "我的訂單有問題，付款也有問題，還有想換貨",
+      "category": "edge_case",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_002",
+      "query": "我跟朋友各買了同款商品，我的壞了但他的好的，這樣可以換嗎？",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_003",
+      "query": "密碼忘了，但帳號裡還有點數，點數會不會不見",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "account_issue",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "account_issue",
+        "routing_reason": "關鍵字分類：intent=account_issue，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_004",
+      "query": "收到的商品沒問題，但包裝盒破了，我想要一個完整的包裝盒",
+      "category": "edge_case",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_005",
+      "query": "幫我退貨，退款直接打現金給我",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_006",
+      "query": "我的包裹送到我家，但地址不對，這個不是我的東西",
+      "category": "edge_case",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_007",
+      "query": "退貨退款跟物流問題一起問可以嗎？我的包裹破損，我要退貨，退款要到哪個帳號",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_008",
+      "query": "ㄏㄟ你好，我的東西有一點點小問題，就是...嗯...怎麼說呢",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_009",
+      "query": "客製化商品可以退嗎？我訂做了一個客製馬克杯",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "edge_010",
+      "query": "我是要退貨還是換貨好？哪個比較快拿到錢？",
+      "category": "edge_case",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "kb_gap_001",
+      "query": "你們的商品有保固嗎？保固期多長？",
+      "category": "knowledge_gap",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "kb_gap_002",
+      "query": "我想問一些完全不相關的問題，比如說今天天氣好不好",
+      "category": "knowledge_gap",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "kb_gap_003",
+      "query": "我買的商品在使用說明書上說有安全疑慮，我擔心有毒",
+      "category": "knowledge_gap",
+      "layer1": {
+        "passed": false,
+        "route_ok": false,
+        "intent_ok": true,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.human",
+        "expected_intent": "other",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "not a queries.agent case"
+      }
+    },
+    {
+      "id": "multi_turn_001",
+      "query": "上次你說退貨要3-5天，但現在已經第7天了還沒退款",
+      "category": "multi_turn",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "multi_turn_002",
+      "query": "之前有問過退貨問題，現在想確認退款進度",
+      "category": "multi_turn",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "multi_turn_003",
+      "query": "昨天問的那個物流問題，包裹還是沒送到，要怎麼辦",
+      "category": "multi_turn",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "colloquial_001",
+      "query": "蛤退貨不是說有七天嗎，為什麼說不能退",
+      "category": "colloquial",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "colloquial_002",
+      "query": "哈囉我的東西好像還沒到齁，是還在路上嗎？",
+      "category": "colloquial",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.1,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "colloquial_003",
+      "query": "不好意思想問一下 我剛買的東西能不能不要了謝謝",
+      "category": "colloquial",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "other",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=other，信心度=0.35",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "colloquial_004",
+      "query": "錢扣了但沒收到東西也沒有任何通知這正常嗎",
+      "category": "colloquial",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "logistics",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "payment_issue",
+        "routing_reason": "關鍵字分類：intent=logistics，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "boundary_001",
+      "query": "我想退貨。謝謝。",
+      "category": "boundary",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.9",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "boundary_002",
+      "query": "訂單",
+      "category": "boundary",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "order_inquiry",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "boundary_003",
+      "query": "你好，我想請問一下貴平台的退換貨政策的具體規定，特別是關於鑑賞期的計算方式、不適用退貨的商品類別、退",
+      "category": "boundary",
+      "layer1": {
+        "passed": true,
+        "route_ok": true,
+        "intent_ok": true,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "return_refund",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "boundary_004",
+      "query": "操你媽的，你們這個爛平台！包裹爛掉了！賠錢！",
+      "category": "boundary",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": false,
+        "actual_route": "queries.agent",
+        "actual_intent": "order_inquiry",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "logistics",
+        "routing_reason": "關鍵字分類：intent=order_inquiry，信心度=0.75",
+        "error": ""
+      },
+      "layer2": {
+        "passed": false,
+        "error": "GEMINI_API_KEY 未設定，無法建立 Gemini client"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    },
+    {
+      "id": "boundary_005",
+      "query": "我已經申請退貨了，退款已退，但我想再問一下這次的退貨體驗",
+      "category": "boundary",
+      "layer1": {
+        "passed": false,
+        "route_ok": true,
+        "intent_ok": false,
+        "emotion_ok": true,
+        "actual_route": "queries.agent",
+        "actual_intent": "return_refund",
+        "actual_emotion_score": 0.0,
+        "expected_route": "queries.agent",
+        "expected_intent": "general_complaint",
+        "routing_reason": "關鍵字分類：intent=return_refund，信心度=0.98",
+        "error": ""
+      },
+      "layer2": {
+        "skipped": true,
+        "reason": "kb_answerable=false"
+      },
+      "layer3": {
+        "skipped": true,
+        "reason": "GEMINI_API_KEY not set"
+      }
+    }
+  ]
+}
