@@ -43,13 +43,13 @@ def get_bootstrap_servers() -> str:
 
 # Topic 定義
 TOPICS = {
-    "queries.incoming":      {"num_partitions": 10, "replication_factor": 1},  # 3 → 10，支援最多 10 個並行 router-agent
-    "queries.agent":         {"num_partitions": 5,  "replication_factor": 1},  # 2 → 5，Router → Resolution Agent
-    "queries.human":         {"num_partitions": 3,  "replication_factor": 1},  # 2 → 3
-    "queries.retry":         {"num_partitions": 2,  "replication_factor": 1},  # 1 → 2
+    "queries.incoming":      {"num_partitions": 10, "replication_factor": 1},  # 支援最多 10 個並行 router-agent
+    "queries.agent":         {"num_partitions": 5,  "replication_factor": 1},  # Router → Resolution Agent
+    "queries.human":         {"num_partitions": 3,  "replication_factor": 1},
+    "queries.retry":         {"num_partitions": 2,  "replication_factor": 1},
     "queries.dlq":           {"num_partitions": 1,  "replication_factor": 1},
-    "responses.completed":   {"num_partitions": 6,  "replication_factor": 1},  # 3 → 6（3 consumer groups × 2）
-    "events.telemetry":      {"num_partitions": 3,  "replication_factor": 1},  # 2 → 3
+    "responses.completed":   {"num_partitions": 6,  "replication_factor": 1},  # 3 consumer groups × 2
+    "events.telemetry":      {"num_partitions": 3,  "replication_factor": 1},
 }
 
 
